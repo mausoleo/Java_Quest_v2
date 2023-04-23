@@ -41,4 +41,23 @@ public class Inimigos extends Personagens{
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+
+    ///////////////////////////////////////////
+
+    // Método para calcular o dano recebido do inimigo;
+    @Override
+    public void levarDano(int danoRecebido) {
+        escreverColorido("vermelho", "O inimigo levou " + danoRecebido + " de dano!");
+        escreverColorido("vermelho", "Vida anterior: " + getVida());
+        this.vida -= danoRecebido;
+        escreverColorido("vermelho", "Vida atual: " + getVida());
+        System.out.println(/*ESPAÇO*/);
+    }
+
+    // Método para retornar o valor do dano do inimigo;
+    @Override
+    public int atacar() {
+        return poderDeAtaque;
+    }
 }

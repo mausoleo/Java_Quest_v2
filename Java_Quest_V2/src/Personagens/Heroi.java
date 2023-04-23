@@ -84,7 +84,7 @@ public class Heroi extends Personagens{
         escreverColorido("vermelho", "Você recebeu " + danoRecebido + " de dano!");
         escreverColorido("verde", "Vida anterior: " + getVida());
         this.vida -= danoRecebido;
-        escreverColorido("vermelho", "Vida atual: " + getVida());
+        escreverColorido("verde", "Vida atual: " + getVida());
         System.out.println(/*ESPAÇO*/);
     }
 
@@ -144,40 +144,5 @@ public class Heroi extends Personagens{
     public void morrer() {
         escreverColorido("vermelho", "Você morreu!");
         setStatus(false);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    // Função para escrever colorido
-
-    public static void escreverColorido(String cor, String seuTextoAqui) {
-        String CSI = "\u001B[";
-
-        if (cor.equalsIgnoreCase("vermelho")) {
-            System.out.print (CSI + "31" + "m");
-            System.out.println(seuTextoAqui);
-            System.out.print (CSI + "m");
-        } else if (cor.equalsIgnoreCase("azul")) {
-            System.out.print (CSI + "34" + "m");
-            System.out.println(seuTextoAqui);
-            System.out.print (CSI + "m");
-        } else if (cor.equalsIgnoreCase("verde")) {
-            System.out.print (CSI + "32" + "m");
-            System.out.println(seuTextoAqui);
-            System.out.print (CSI + "m");
-        } else if (cor.equalsIgnoreCase("amarelo")) {
-            System.out.print (CSI + "33" + "m");
-            System.out.println(seuTextoAqui);
-            System.out.print (CSI + "m");
-        }
     }
 }

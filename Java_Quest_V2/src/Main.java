@@ -1,26 +1,13 @@
-import Personagens.*;
+import Inventario.Inventario;
+import Inventario.Itens.PocaoCura;
+import Inventario.Itens.PocaoDano;
 
 public class Main {
     public static void main(String[] args) {
-        Heroi heroi = new Heroi();
-        Inimigos inimigos = new Inimigos();
-        inimigos.setPoderDeAtaque(5);
+        Inventario inventario = new Inventario();
+        PocaoCura pocaoCura = new PocaoCura();
+        PocaoDano pocaoDano = new PocaoDano();
 
-        heroi.setXp(10);
-        heroi.setXpNecessarioParaUpar(5);
-        heroi.subirDeNivel();
-
-
-
-        heroi.levarDano(inimigos.getPoderDeAtaque());
-
-        heroi.receberMoedas(10);
-
-        heroi.curar(5);
-
-        heroi.fortificar(5);
-
-        heroi.morrer();
+        inventario.adicionarPocaoDeDano(pocaoDano);
     }
-
 }

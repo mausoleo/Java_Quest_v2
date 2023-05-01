@@ -2,7 +2,7 @@ package Inventario.Itens;
 
 public class PocaoDano {
     private String nome = "Poção de dano";
-    private int poderDeDano;
+    private int poderDeDano = 3;
 
     // Getters e Setters
 

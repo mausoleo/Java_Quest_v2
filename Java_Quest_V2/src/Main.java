@@ -108,9 +108,23 @@ public class Main {
                     }
                     pocoesCura.add(pocaoCura);
                 }
+                
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+            // O usuário só irá aqui para baixo a partir do Menu principal, escolhendo "Sobre" ou "Sair".
             } else if (decisao == 2){
                 int decisaoVoltarMenu;
                 escreverColorido("azul", "JavaQuest é um jogo RPG que simula os clássicos como Dunnet e Zork.");

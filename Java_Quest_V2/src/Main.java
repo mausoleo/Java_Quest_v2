@@ -196,7 +196,8 @@ public class Main {
 
                 while (decisaoAposInicio != 0) { // Método de verificação de resposta.
                     escreverColorido("vermelho", "Escolha uma opção existente!");
-                    System.out.print("Decisão: "); decisaoDificuldade = sc.nextInt();
+                    System.out.print("Decisão: ");
+                    decisaoAposInicio = sc.nextInt();
                     System.out.println(/*ESPAÇO*/);
                 }
 

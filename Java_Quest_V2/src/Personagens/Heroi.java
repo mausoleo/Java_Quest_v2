@@ -7,7 +7,7 @@ public class Heroi extends Personagens{
     private int xp;
     private int xpNecessarioParaUpar;
     private int bolsaDeMoedas;
-    private boolean status;
+    private boolean status = true;
 
     // Getters e Setters
 
@@ -118,6 +118,11 @@ public class Heroi extends Personagens{
         escreverColorido("amarelo", "Bolsa de moedas agora: " + getBolsaDeMoedas());
 
         System.out.println(/*ESPAÇO*/);
+    }
+
+    // Método para perder moedas;
+    public void perderMoedas(int moedas) {
+        this.bolsaDeMoedas -= moedas;
     }
 
     // Método para quando se usa a poção de vida;

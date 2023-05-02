@@ -48,10 +48,10 @@ public class Inimigos extends Personagens{
     // Método para calcular o dano recebido do inimigo;
     @Override
     public void levarDano(int danoRecebido) {
-        escreverColorido("vermelho", "O inimigo levou " + danoRecebido + " de dano!");
-        escreverColorido("vermelho", "Vida anterior: " + getVida());
+        escreverColorido("azul", "O inimigo levou " + danoRecebido + " de dano!");
+        escreverColorido("vermelho", "Vida anterior do inimigo: " + getVida());
         this.vida -= danoRecebido;
-        escreverColorido("vermelho", "Vida atual: " + getVida());
+        escreverColorido("vermelho", "Vida atual do inimigo: " + getVida());
         System.out.println(/*ESPAÇO*/);
     }
 

@@ -38,7 +38,7 @@ public class Main {
             /*Condicional que irá encaminhas o jogo, se for 1 o jogo irá iniciar, se for 2 irá para o sobre
             * e 3 fará com que o jogo se encerre*/
             if (decisao == 1) {
-                // Convocação das classes necessárias
+                // Convocação das classes necessárias.
                 Heroi heroi = new Heroi();
                 List<Inimigos> inimigos = new ArrayList();
 
@@ -47,6 +47,7 @@ public class Main {
                 List<PocaoCura> pocoesCura = new ArrayList();
                 List<PocaoDano> pocoesDano = new ArrayList();
 
+                // Criação dos inimigos no jogo.
                 for (int i=0; i<4; i++) {
                     Inimigos inimigo = new Inimigos();
                     inimigos.add(inimigo);
@@ -183,7 +184,112 @@ public class Main {
                 Collections.shuffle(perguntaFase4);
                 Collections.shuffle(perguntaFase5);
 
-                
+                escreverColorido("verde", "Olá herói! Como você pode ver, a cidade da São Paulo está meio noggers ambientalmente falando.\n" +
+                        "Dessa forma, você terá que enfrentar alguns inimigos, dentre eles:");
+                escreverColorido("vermelho", "- Super Lixão;\n- Super Gás Nocivo Venenoso;\n- Mr. Poluição;\n- Senhorita Chuva Ácida;\n- Toxic.\n");
+
+                int decisaoAposInicio;
+                System.out.println("[0] Começar a aventura");
+                System.out.print("Decisão: ");
+                decisaoAposInicio = sc.nextInt();
+                System.out.println(/*ESPAÇO*/);
+
+                while (decisaoAposInicio != 0) {
+                    escreverColorido("vermelho", "Escolha uma opção existente!");
+                    System.out.print("Decisão: "); decisaoDificuldade = sc.nextInt();
+                    System.out.println(/*ESPAÇO*/);
+                }
+
+                boolean condicaoBatalha = true;
+                // Condicional que será responsável por loppar a batalha em vários turnos.
+                escreverColorido("verde", "Você trombou com o Super Lixão! Terá que enfrentá-lo!");
+                do {
+                    int decisaoCombate;
+                    escreverColorido("azul", "Seu turno:");
+                    boolean condicaoMenuEscolha = true; // Enquanto for true, o usuário nem atacou ou usou um item.
+                    do {
+                        System.out.println("[1] Atacar\n" +
+                                            "[2] Itens");
+                        System.out.print("Decisão: ");
+                        decisaoCombate = sc.nextInt();
+
+                        System.out.println(/*ESPAÇO*/);
+
+                        while (decisaoCombate != 1 && decisaoCombate != 2) {
+                            escreverColorido("vermelho", "Escolha uma opção existente!");
+                            System.out.print("Decisão: ");
+                            decisaoCombate = sc.nextInt();
+                        }
+
+                        if (decisaoCombate == 1) { // Se for 1, ele terá que responder a pergunta, se acertar ele vai dar dano, se não levará.
+                            for (int i = 0; i < perguntaFase1.size(); i++) {
+                                System.out.println("Pergunta " + (i + 1) + ":");
+                                perguntaFase1.get(i).mostrarPergunta();
+
+                                // Solicita a resposta do usuário e verifica se está correta
+                                System.out.print("Sua resposta: ");
+                                int resposta = sc.nextInt();
+
+                                if (perguntaFase1.get(i).verificarResposta(resposta)) {
+                                    escreverColorido("verde", "Resposta Correta!");
+                                    System.out.println(/*ESPAÇO*/);
+                                    inimigos.get(0).levarDano(heroi.atacar());
+                                } else {
+                                    escreverColorido("vermelho", "Resposta Incorreta!");
+                                    System.out.println(/*ESPAÇO*/);
+                                    heroi.levarDano(inimigos.get(0).atacar());
+                                }
+                            }
+
+
+                        } else if (decisaoCombate == 2) { // Se for 2, ele irá para o inventário até que use algo ou saia para atacar.
+                            escreverColorido("verde", "Inventário:");
+                            escreverColorido("amarelo", "[1] Para usar um item de vida!\n" +
+                                    "[2] Para usar um item para aumentar o dano!\n" +
+                                    "[3] Voltar.\n");
+
+                            for (int i=0; i<pocoesCura.size(); i++) { // Irá retornar todos as poções de cura dentro da lista 'pocoesCura'.
+                                System.out.print(pocoesCura.get(i));
+                            }
+
+                            for (int i=0; i<pocoesDano.size(); i++) { // Irá retornar todos as poções de dano dentro da lista 'pocoesDano'.
+                                System.out.print(pocoesDano.get(i));
+                            }
+
+                            System.out.print("Decisão: ");
+                            int decisaoConsumivel = sc.nextInt();
+
+                            while (decisaoConsumivel != 1 && decisaoConsumivel != 2 && decisaoConsumivel != 3) {
+                                escreverColorido("vermelho", "Escolha uma opção existente!");
+                                System.out.print("Decisão: ");
+                                decisaoConsumivel = sc.nextInt();
+                            }
+
+                            if (decisaoConsumivel == 1) {
+                                if (pocoesCura.isEmpty()) { // Se for True, significa que não tem o item na lista.
+                                    escreverColorido("vermelho", "Você não tem esse item!");
+                                } else if (pocoesCura.contains(pocaoCura)) { // Se tiver contem Poção de Cura na lista, irá usar o item
+                                    heroi.curar(pocaoCura.getPoderDeCura());
+                                    pocoesCura.remove(pocaoCura);
+                                    condicaoMenuEscolha = false;
+                                }
+                            } else if (decisaoConsumivel == 2) {
+                                if (pocoesDano.isEmpty()) { // Se for True, significa que não tem o item na lista.
+                                    escreverColorido("vermelho", "Você não tem esse item!");
+                                } else if (pocoesDano.contains(pocaoDano)) {  // Se tiver contem Poção de Dano na lista, irá usar o item
+                                    heroi.fortificar(pocaoDano.getPoderDeDano());
+                                    pocoesDano.remove(pocaoDano);
+                                    condicaoMenuEscolha = false;
+                                }
+                            } else if (decisaoConsumivel == 3) {
+                                condicaoMenuEscolha = true;
+                            }
+
+                        }
+                    } while (condicaoMenuEscolha);
+
+                } while (condicaoBatalha || heroi.isStatus() || inimigos.get(0).isStatus());
+
 
             // O usuário só irá aqui para baixo a partir do Menu principal, escolhendo "Sobre" ou "Sair".
             } else if (decisao == 2){

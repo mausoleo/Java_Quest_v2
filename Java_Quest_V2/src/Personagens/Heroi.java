@@ -122,6 +122,7 @@ public class Heroi extends Personagens{
 
     // Método para quando se usa a poção de vida;
     public void curar(int pocaoDeVida) {
+        System.out.println(/*ESPAÇO*/);
         escreverColorido("azul", "Você usou uma poção de vída!");
         System.out.print(getVida());
         this.vida += pocaoDeVida;
@@ -132,6 +133,7 @@ public class Heroi extends Personagens{
 
     // Método para quando se usa a poção de força;
     public void fortificar(int pocaoDeForca) {
+        System.out.println(/*ESPAÇO*/);
         escreverColorido("azul", "Você usou uma poção de força permanente!");
         System.out.print(getPoderDeAtaque());
         this.poderDeAtaque += pocaoDeForca;

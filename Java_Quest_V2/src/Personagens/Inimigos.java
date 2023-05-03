@@ -5,6 +5,7 @@ public class Inimigos extends Personagens{
     protected int poderDeAtaque;
     protected int xpDropavel;
     protected boolean status;
+    protected String nome;
 
     @Override
     public int getVida() {
@@ -42,6 +43,13 @@ public class Inimigos extends Personagens{
         this.status = status;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     ///////////////////////////////////////////
 

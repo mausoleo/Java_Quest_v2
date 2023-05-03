@@ -47,6 +47,10 @@ public class Heroi extends Personagens{
         return xp;
     }
 
+    public void acumuladorXp(int xp) {
+        this.xp += xp;
+    }
+
     public void setXp(int xp) {
         this.xp = xp;
     }
@@ -100,10 +104,13 @@ public class Heroi extends Personagens{
         if (getXp() >= getXpNecessarioParaUpar()) {
             setXp(getXp() - getXpNecessarioParaUpar()); // Fará com que o XP não resete quando você subir de nível;
 
-            escreverColorido("azul", "Você subiu de nível!\n" +
+            escreverColorido("azul", "Você subiu de nível e ganhou duas moedas!\n" +
                     "Nivel anterior: " + getNivel());
             this.nivel++;
             escreverColorido("azul", "Nível atual: " + getNivel());
+            escreverColorido("amarelo", "Bolsa de moedas antes: " + getBolsaDeMoedas());
+            this.bolsaDeMoedas += 2;
+            escreverColorido("amarelo", "Bolsa de moedas agora: " + getBolsaDeMoedas());
 
             this.xpNecessarioParaUpar += 3;
         }
@@ -112,7 +119,7 @@ public class Heroi extends Personagens{
 
     // Método para receber moedas;
     public void receberMoedas(int moedasGanhas) {
-        escreverColorido("amarelo", "Você recebeu " + moedasGanhas + " moedas!");
+        escreverColorido("amarelo", "Você recebeu " + moedasGanhas + " moedas por derrotar o inimigo!");
         escreverColorido("amarelo", "Bolsa de moedas antes: " + getBolsaDeMoedas());
         this.bolsaDeMoedas += moedasGanhas;
         escreverColorido("amarelo", "Bolsa de moedas agora: " + getBolsaDeMoedas());
